@@ -1,13 +1,12 @@
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SortGui 
 {
-	public int[] data;
+	private int[] data;
 	
 	public SortGui() 
 	{
-		data = new int[50];
+		data = randomNumberGenerator();
 	}
 	
 	public SortGui(int[] data) 
@@ -15,7 +14,7 @@ public class SortGui
 		this.data = data;
 	}
 
-	void printData()
+	public void printData()
 	{
 		for(int i = 0; i < data.length; i++)
 		{
@@ -35,7 +34,7 @@ public class SortGui
 	 * Duplicates allowed
 	 * Store in array 
 	 */
-	static int[] randomNumberGenerator() 
+	public static int[] randomNumberGenerator() 
 	{
 		int[] rand = new int[10];
 		for(int i = 0; i < 10; i++)
@@ -45,7 +44,7 @@ public class SortGui
 		return rand;
 	}
 	
-	void insertionSort() 
+	public void insertionSort() 
 	{
 		for(int i = 1; i < data.length; i++)
 		{
@@ -64,37 +63,55 @@ public class SortGui
 		}
 	}
 	
-	void selectionSort() 
+	public void selectionSort() 
+	{
+		for(int i = 0; i < data.length; i++)
+		{
+			int minIndex = i;
+			int min = data[minIndex];
+			for(int j = i + 1; j < data.length; j++)
+			{
+				if(data[j] < min)
+				{
+					min = data[j];
+					minIndex = j;
+				}
+			}
+			if (i != minIndex)
+			{
+				data[i] = data[i] + data[minIndex];
+				data[minIndex] = data[i] - data[minIndex];
+				data[i] = data[i] - data[minIndex];
+			}
+		}
+	}
+	
+	public void shellSort() 
 	{
 
 	}
 	
-	void shellSort() 
+	public void heapSort() 
 	{
 
 	}
 	
-	void heapSort() 
-	{
-
-	}
-	
-	void mergeSort() 
+	public void mergeSort() 
 	{	
 
 	}
 	
-	void quickSort() 
+	public void quickSort() 
 	{	
 
 	}
 	
 	public static void main(String[] args) 
 	{
-		SortGui sortGui = new SortGui(randomNumberGenerator());
+		SortGui sortGui = new SortGui();
 		System.out.println("Before sorting: ");
 		sortGui.printData();
-		sortGui.insertionSort();
+		sortGui.selectionSort();
 		System.out.println("After sorting: ");
 		sortGui.printData();
 	}
