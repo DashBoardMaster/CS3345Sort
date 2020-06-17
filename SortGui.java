@@ -1,5 +1,42 @@
-public class SortGui {
-  public static void main(String[] args) {
-    System.out.println("Hello world");
-  }
+public class SortGui 
+{
+	public SortGui() 
+	{
+		
+	}
+	
+	void insertionSort() 
+	{
+
+	}
+	
+	void selectionSort() 
+	{
+
+	}
+	
+	void shellSort() 
+	{
+
+	}
+	
+	void heapSort() 
+	{
+
+	}
+	
+	void mergeSort() 
+	{	
+
+	}
+	
+	void quickSort() 
+	{	
+
+	}
+	
+	public static void main(String[] args) 
+	{
+    
+	}
 }
