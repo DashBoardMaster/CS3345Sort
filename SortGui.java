@@ -1,5 +1,6 @@
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class SortGui 
 {
 	private int[] data;
@@ -69,6 +70,8 @@ public class SortGui
 		{
 			int minIndex = i;
 			int min = data[minIndex];
+			
+			// Find min
 			for(int j = i + 1; j < data.length; j++)
 			{
 				if(data[j] < min)
@@ -79,6 +82,7 @@ public class SortGui
 			}
 			if (i != minIndex)
 			{
+				// Swap
 				data[i] = data[i] + data[minIndex];
 				data[minIndex] = data[i] - data[minIndex];
 				data[i] = data[i] - data[minIndex];
@@ -86,32 +90,11 @@ public class SortGui
 		}
 	}
 	
-	public void shellSort() 
-	{
-
-	}
-	
-	public void heapSort() 
-	{
-
-	}
-	
-	public void mergeSort() 
-	{	
-
-	}
-	
-	public void quickSort() 
-	{	
-
-	}
-	
 	public static void main(String[] args) 
 	{
 		SortGui sortGui = new SortGui();
 		System.out.println("Before sorting: ");
 		sortGui.printData();
-		sortGui.selectionSort();
 		System.out.println("After sorting: ");
 		sortGui.printData();
 	}
