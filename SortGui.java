@@ -48,9 +48,8 @@ public class SortGui extends Application
 	}
 	
 	@Override
-	public void start(Stage primaryStage) {
-		Scene scene = new Scene(anchor, 200, 250);
-		primaryStage.setScene(scene); // Place the scene in the stage
+	public void start(Stage primaryStage) {;
+		//primaryStage.setScene(); // Place the scene in the stage
 		primaryStage.show(); // Display the stage
 	}
 	
