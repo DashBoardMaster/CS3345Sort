@@ -12,6 +12,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import javafx.scene.canvas.Canvas;
 
 
 
@@ -61,22 +62,25 @@ public class SortGui extends Application
 	
 	@Override
 	public void start(Stage primaryStage) {
+		Canvas canvas = new Canvas(400,  300);
+		
+		
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		
 		Rectangle sortButtonList = new Rectangle(screenBounds.getMaxX() / 3, screenBounds.getMaxY());
 		sortButtonList.setFill(Color.LIGHTGRAY);
 		
 		Rectangle winningAlgorithm = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() * 2 / 16);
-		winningAlgorithm.setFill(Color.YELLOW);
+		winningAlgorithm.setFill(Color.LIGHTGRAY);
 		
 		Rectangle listProperties = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() * 7 / 16);
-		listProperties.setFill(Color.RED);
+		listProperties.setFill(Color.LIGHTGRAY);
 		
 		Rectangle experimentalResults = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() * 7 / 16);
-		experimentalResults.setFill(Color.BLUE);
+		experimentalResults.setFill(Color.LIGHTGRAY);
 		
 		AnchorPane anchor = new AnchorPane(sortButtonList, winningAlgorithm, listProperties, experimentalResults);
-		anchor.setStyle("-fx-border-color: grey;");
+		anchor.setStyle("-fx-border-color: white");
 		
 		AnchorPane.setTopAnchor(sortButtonList, 0.0);
 		AnchorPane.setLeftAnchor(sortButtonList, 0.0);
