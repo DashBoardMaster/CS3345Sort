@@ -1,6 +1,8 @@
 public class SelectionSort {
   /** The method for sorting the numbers */
   static int comparisons = 0;
+  static int movements = 0;
+  
   public static void selectionSort(double[] list) {
     for (int i = 0; i < list.length - 1; i++) {
       // Find the minimum in the list[i..list.length-1]

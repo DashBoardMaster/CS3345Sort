@@ -5,30 +5,44 @@ import javafx.stage.Stage;
 
 public class SortGui extends Application
 {
-	private int[] data;
+	int[] data;
 	
 	public SortGui() 
 	{
-		data = randomNumberGenerator();
-	}
-	
-	public SortGui(int[] data) 
-	{
-		this.data = data;
 	}
 	
 	/* Generates 50000 random numbers from 1 to 1000000 
 	 * Duplicates allowed
 	 * Store in array 
 	 */
-	public static int[] randomNumberGenerator() 
+	public static int[] randomNumberGenerator(int size) 
 	{
-		int[] rand = new int[10];
-		for(int i = 0; i < 10; i++)
+		int[] rand = new int[size];
+		for(int i = 0; i < size; i++)
 		{
 			rand[i] = ThreadLocalRandom.current().nextInt(1, 1000001);
 		}
 		return rand;
+	}
+	
+	public static int[] sortedDataGenerator(int size) 
+	{
+		int[] sorted = new int[size];
+		for(int i = 0; i < size; i++)
+		{
+			sorted[i] = i;
+		}
+		return sorted;
+	}
+	
+	public static int[] reverseDataGenerator(int size) 
+	{
+		int[] reverse = new int[size];
+		for(int i = 0; i < size; i++)
+		{
+			reverse[i] = size - i;
+		}
+		return reverse;
 	}
 	
 	@Override

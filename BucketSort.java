@@ -1,5 +1,8 @@
 public class BucketSort {
   /** Bucket sort method */
+  static int movements = 0;
+  static int comparisons = 0;
+  
   public void bucketSort(int[] list) {
   	
     int[] bucket = new int[list.length + 1];

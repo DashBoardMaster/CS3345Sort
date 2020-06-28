@@ -1,5 +1,7 @@
 public class InsertionSort {
 	static int comparisons = 0;
+	static int movements = 0;
+	
     /** The method for sorting the numbers */
     public static void insertionSort(int[] list) {
       for (int i = 1; i < list.length; i++) {

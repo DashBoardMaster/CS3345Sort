@@ -1,5 +1,7 @@
 public class MergeSort {
-	static int comp = 0;
+	static int comparisons = 0;
+	static int movements = 0;
+	
   /** The method for sorting the numbers */
   public static void mergeSort(int[] list) {
     if (list.length > 1) {
@@ -29,7 +31,7 @@ public class MergeSort {
     int current3 = 0; // Current index in temp
 
     while (current1 < list1.length && current2 < list2.length) {
-    	comp++;
+    	comparisons++;
       if (list1[current1] < list2[current2])
         temp[current3++] = list1[current1++];
       else

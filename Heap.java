@@ -1,7 +1,8 @@
 public class Heap<E extends Comparable<E>> {
   private java.util.ArrayList<E> list = new java.util.ArrayList<>();
   static int comparisons = 0;
-
+  static int movements = 0;
+  
   /** Create a default heap */
   public Heap() {
   }

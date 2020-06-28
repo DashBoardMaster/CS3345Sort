@@ -1,6 +1,8 @@
 import java.util.*;
 class Radix {
 	static int comparisons = 0;
+	static int movements = 0;
+	
       static int getMax(int arr[], int n){
     	  
       int mx = arr[0];
