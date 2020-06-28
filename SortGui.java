@@ -5,10 +5,21 @@ import javafx.stage.Stage;
 
 public class SortGui extends Application
 {
-	int[] data;
+	int n;
+	String datatype;
+	String sort;
+	int comparisons;
+	int movements;
+	int totalTime;
 	
 	public SortGui() 
 	{
+		n = 0;
+		datatype = "";
+		sort = "";
+		comparisons = 0;
+		movements = 0;
+		totalTime = 0;
 	}
 	
 	/* Generates 50000 random numbers from 1 to 1000000 

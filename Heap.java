@@ -22,11 +22,11 @@ public class Heap<E extends Comparable<E>> {
       int parentIndex = (currentIndex - 1) / 2;
       // Swap if the current object is greater than its parent
       comparisons++;
-      if (list.get(currentIndex).compareTo(
-          list.get(parentIndex)) > 0) {
+      if (list.get(currentIndex).compareTo(list.get(parentIndex)) > 0) {
         E temp = list.get(currentIndex);
         list.set(currentIndex, list.get(parentIndex));
         list.set(parentIndex, temp);
+        movements++;
       }
       else
         break; // The tree is a heap now
@@ -47,26 +47,29 @@ public class Heap<E extends Comparable<E>> {
     while (currentIndex < list.size()) {
       int leftChildIndex = 2 * currentIndex + 1;
       int rightChildIndex = 2 * currentIndex + 2;
+      
       // Find the maximum between two children
+      comparisons++;
       if (leftChildIndex >= list.size()) break; // The tree is a heap
+      
       int maxIndex = leftChildIndex;
       
+      comparisons++;
       if (rightChildIndex < list.size()) {
-    	  comparisons++;
-        if (list.get(maxIndex).compareTo(
-            list.get(rightChildIndex)) < 0) {
+    	comparisons++;
+        if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) < 0) {
           maxIndex = rightChildIndex;
         }
       }
 
       // Swap if the current node is less than the maximum
       comparisons++;
-      if (list.get(currentIndex).compareTo(
-          list.get(maxIndex)) < 0) {
+      if (list.get(currentIndex).compareTo(list.get(maxIndex)) < 0) {
         E temp = list.get(maxIndex) ;
         list.set(maxIndex, list.get(currentIndex));
         list.set(currentIndex, temp);
         currentIndex = maxIndex;
+        movements++;
       }
       else
         break; // The tree is a heap

@@ -37,6 +37,7 @@ public class QuickSort {
 				int temp = list[high];
 				list[high] = list[low];
 				list[low] = temp;
+				movements++;
 			}
 		}
 		
@@ -50,6 +51,7 @@ public class QuickSort {
 		if (pivot > list[high]) {
 			list[first] = list[high];
 			list[high] = pivot;
+			movements++;
 			return high;
 		}
 		else {
