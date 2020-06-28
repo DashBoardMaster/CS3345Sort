@@ -6,7 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 
 
 
@@ -56,22 +59,31 @@ public class SortGui extends Application
 	
 	@Override
 	public void start(Stage primaryStage) {
-		 FlowPane pane = new FlowPane();
-		 pane.setPadding(new Insets(11, 12, 13, 14)); // Size of border of pane
-		 pane.setHgap(5); // Horizontal gap 
-		 pane.setVgap(5); // Vertical gap
-		 // Place nodes in the pane
-		 pane.getChildren().addAll(new Label("N:"), new TextField(), 
-				 				   new Label("DataType:"), new TextField(),
-				 				   new Label("Sort:"), new TextField(),
-				 				   new Label("Comparisons:"), new TextField(),
-				 				   new Label("Movements:"), new TextField(),
-				 				   new Label("Total time:"), new TextField());
-		 // Create a scene and place it in the stage
-		 Scene scene = new Scene(pane, 200, 250);
-		 primaryStage.setTitle("ShowFlowPane"); // Set the stage title
-		 primaryStage.setScene(scene); // Place the scene in the stage
-		 primaryStage.show(); // Display the stage
+		Rectangle r1 = new Rectangle(400,200);
+		r1.setFill(Color.LIGHTGRAY);
+		Rectangle r2 = new Rectangle(200,400);
+		r2.setFill(Color.DARKGRAY);
+		AnchorPane anchor = new AnchorPane(r1, r2);
+		 
+		GridPane experimentalResults = new GridPane();
+		// experimentalResults.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
+		experimentalResults.setAlignment(Pos.BOTTOM_RIGHT);
+		experimentalResults.add(new Label("N:"), 0, 0);
+		experimentalResults.add(new TextField(), 1, 0);
+		experimentalResults.add(new Label("DataType:"), 0, 1);
+		experimentalResults.add(new TextField(), 1, 1);
+		experimentalResults.add(new Label("Sort:"), 0, 2);
+		experimentalResults.add(new TextField(), 1, 2);
+		experimentalResults.add(new Label("Comparisons:"), 0, 3);
+		experimentalResults.add(new TextField(), 1, 3);
+		experimentalResults.add(new Label("Movements:"), 0, 4);
+		experimentalResults.add(new TextField(), 1, 4);
+		experimentalResults.add(new Label("Total time:"), 0, 5);
+		experimentalResults.add(new TextField(), 1, 5);
+
+		Scene scene = new Scene(anchor, 200, 250);
+		primaryStage.setScene(scene); // Place the scene in the stage
+		primaryStage.show(); // Display the stage
 	}
 	
 	public static void main(String[] args) 
@@ -79,3 +91,4 @@ public class SortGui extends Application
 		Application.launch(args);
 	}
 }
+
