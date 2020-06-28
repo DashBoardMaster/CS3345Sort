@@ -1,5 +1,3 @@
-import java.time.Instant;
-
 public class MergeSort {
 	static int comparisons = 0;
 	static int movements = 0;

@@ -1,5 +1,3 @@
-import java.time.Instant;
-
 public class HeapSort {
 	/** Heap sort method */
 	public static <E extends Comparable<E>> void heapSort(E[] list) {

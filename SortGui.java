@@ -64,7 +64,13 @@ public class SortGui extends Application
 	
 	public static void main(String[] args) 
 	{
+		SortGui sort = new SortGui();
 		Application.launch(args);
+		
+		long start = System.currentTimeMillis();
+		long end = System.currentTimeMillis();
+		long time = end - start;
+		sort.totalTime = (int) (time / 1000.0);
 	}
 }
 

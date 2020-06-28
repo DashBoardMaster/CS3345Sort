@@ -1,5 +1,3 @@
-import java.time.Instant;
-
 public class QuickSort {
 	static int comparisons = 0;
 	static int movements = 0;

@@ -1,5 +1,3 @@
-import java.time.Instant;
-
 public class SelectionSort {
 	/** The method for sorting the numbers */
 	static int comparisons = 0;

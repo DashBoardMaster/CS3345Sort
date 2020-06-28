@@ -1,6 +1,4 @@
 import java.util.*;
-import java.time.Instant;
-
 class Radix {
 	static int comparisons = 0;
 	static int movements = 0;
