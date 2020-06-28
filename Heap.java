@@ -1,5 +1,6 @@
 public class Heap<E extends Comparable<E>> {
   private java.util.ArrayList<E> list = new java.util.ArrayList<>();
+  static int comparisons = 0;
 
   /** Create a default heap */
   public Heap() {
@@ -19,6 +20,7 @@ public class Heap<E extends Comparable<E>> {
     while (currentIndex > 0) {
       int parentIndex = (currentIndex - 1) / 2;
       // Swap if the current object is greater than its parent
+      comparisons++;
       if (list.get(currentIndex).compareTo(
           list.get(parentIndex)) > 0) {
         E temp = list.get(currentIndex);
@@ -47,7 +49,9 @@ public class Heap<E extends Comparable<E>> {
       // Find the maximum between two children
       if (leftChildIndex >= list.size()) break; // The tree is a heap
       int maxIndex = leftChildIndex;
+      
       if (rightChildIndex < list.size()) {
+    	  comparisons++;
         if (list.get(maxIndex).compareTo(
             list.get(rightChildIndex)) < 0) {
           maxIndex = rightChildIndex;
@@ -55,6 +59,7 @@ public class Heap<E extends Comparable<E>> {
       }
 
       // Swap if the current node is less than the maximum
+      comparisons++;
       if (list.get(currentIndex).compareTo(
           list.get(maxIndex)) < 0) {
         E temp = list.get(maxIndex) ;

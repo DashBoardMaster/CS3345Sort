@@ -1,11 +1,14 @@
-import java.io.*;
 import java.util.*;
 class Radix {
+	static int comparisons = 0;
       static int getMax(int arr[], int n){
+    	  
       int mx = arr[0];
-      for (int i = 1; i < n; i++)
+      for (int i = 1; i < n; i++) {
+    	comparisons++;
         if (arr[i] > mx)
           mx = arr[i];
+      }
       return mx;
   }
   static void countSort(int arr[], int n, int exp) {
