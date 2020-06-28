@@ -80,7 +80,7 @@ public class SortGui extends Application
 		experimentalResults.setFill(Color.LIGHTGRAY);
 		
 		AnchorPane anchor = new AnchorPane(sortButtonList, winningAlgorithm, listProperties, experimentalResults);
-		anchor.setStyle("-fx-border-color: white");
+		anchor.setStyle("-fx-border-color: white; -fx-border: 12px solid");
 		
 		AnchorPane.setTopAnchor(sortButtonList, 0.0);
 		AnchorPane.setLeftAnchor(sortButtonList, 0.0);
