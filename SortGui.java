@@ -63,31 +63,37 @@ public class SortGui extends Application
 	public void start(Stage primaryStage) {
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		
-		Rectangle r1 = new Rectangle(screenBounds.getMaxX() / 2, screenBounds.getMaxY() / 2);
-		r1.setFill(Color.LIGHTGRAY);
-		Rectangle r2 = new Rectangle(screenBounds.getMaxX() / 2, screenBounds.getMaxY() / 2);
-		r2.setFill(Color.DARKGRAY);
-		AnchorPane anchor = new AnchorPane(r1, r2);
-		AnchorPane.setTopAnchor(r1, 0.0);
-		AnchorPane.setLeftAnchor(r1, 0.0);
-		AnchorPane.setTopAnchor(r2, 0.0);
-		AnchorPane.setRightAnchor(r2, 0.0);
+		Rectangle sortButtonList = new Rectangle(screenBounds.getMaxX() / 3, screenBounds.getMaxY());
+		sortButtonList.setFill(Color.LIGHTGRAY);
+		Rectangle winningAlgorithm = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() / 16);
+		winningAlgorithm.setFill(Color.DARKGRAY);
+		Rectangle listProperties = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() / 16);
+		listProperties.setFill(Color.RED);
+		Rectangle experimentalResults = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() / 16);
+		experimentalResults.setFill(Color.BLUE);
+		AnchorPane anchor = new AnchorPane(sortButtonList, winningAlgorithm, listProperties, experimentalResults);
+		AnchorPane.setTopAnchor(sortButtonList, 0.0);
+		AnchorPane.setLeftAnchor(sortButtonList, 0.0);
+		AnchorPane.setTopAnchor(winningAlgorithm, 0.0);
+		AnchorPane.setRightAnchor(winningAlgorithm, 0.0);
+		AnchorPane.setBottomAnchor(experimentalResults, 0.0);
+		AnchorPane.setRightAnchor(experimentalResults, 0.0);
 		 
-		GridPane experimentalResults = new GridPane();
+		GridPane experimentalResultsButtons = new GridPane();
 		// experimentalResults.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
-		experimentalResults.setAlignment(Pos.BOTTOM_RIGHT);
-		experimentalResults.add(new Label("N:"), 0, 0);
-		experimentalResults.add(new TextField(), 1, 0);
-		experimentalResults.add(new Label("DataType:"), 0, 1);
-		experimentalResults.add(new TextField(), 1, 1);
-		experimentalResults.add(new Label("Sort:"), 0, 2);
-		experimentalResults.add(new TextField(), 1, 2);
-		experimentalResults.add(new Label("Comparisons:"), 0, 3);
-		experimentalResults.add(new TextField(), 1, 3);
-		experimentalResults.add(new Label("Movements:"), 0, 4);
-		experimentalResults.add(new TextField(), 1, 4);
-		experimentalResults.add(new Label("Total time:"), 0, 5);
-		experimentalResults.add(new TextField(), 1, 5);
+		experimentalResultsButtons.setAlignment(Pos.BOTTOM_RIGHT);
+		experimentalResultsButtons.add(new Label("N:"), 0, 0);
+		experimentalResultsButtons.add(new TextField(), 1, 0);
+		experimentalResultsButtons.add(new Label("DataType:"), 0, 1);
+		experimentalResultsButtons.add(new TextField(), 1, 1);
+		experimentalResultsButtons.add(new Label("Sort:"), 0, 2);
+		experimentalResultsButtons.add(new TextField(), 1, 2);
+		experimentalResultsButtons.add(new Label("Comparisons:"), 0, 3);
+		experimentalResultsButtons.add(new TextField(), 1, 3);
+		experimentalResultsButtons.add(new Label("Movements:"), 0, 4);
+		experimentalResultsButtons.add(new TextField(), 1, 4);
+		experimentalResultsButtons.add(new Label("Total time:"), 0, 5);
+		experimentalResultsButtons.add(new TextField(), 1, 5);
 
 		Scene scene = new Scene(anchor, 200, 250);
 		primaryStage.setScene(scene); // Place the scene in the stage
