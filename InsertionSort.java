@@ -1,3 +1,5 @@
+import java.time.Instant;
+
 public class InsertionSort {
 	static int comparisons = 0;
 	static int movements = 0;
@@ -9,13 +11,16 @@ public class InsertionSort {
           list[0..i] is sorted. */
 			int currentElement = list[i];
 			int k;
-			for (k =1 - 1; k >= 0 & list[k] > currentElement; k--) {
+			for (k = i - 1; k >= 0 & list[k] > currentElement; k--) {
 				comparisons++;
+				// Shift element
 				list[k + 1] = list[k];
+				movements++;
 			}
 
 			// Insert the current element into list[k + 1]
 			list[k + 1] = currentElement;
+			movements++;
 		}
 	}
 }

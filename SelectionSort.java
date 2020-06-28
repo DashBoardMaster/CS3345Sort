@@ -1,3 +1,5 @@
+import java.time.Instant;
+
 public class SelectionSort {
 	/** The method for sorting the numbers */
 	static int comparisons = 0;
@@ -19,8 +21,10 @@ public class SelectionSort {
 
 			// Swap list[i] with list[currentMinIndex] if necessary
 			if (currentMinIndex != i) {
+				comparisons++;
 				list[currentMinIndex] = list[i];
 				list[i] = currentMin;
+				movements++;
 			}
 		}
 	}

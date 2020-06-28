@@ -1,3 +1,5 @@
+import java.time.Instant;
+
 public class Heap<E extends Comparable<E>> {
 	private java.util.ArrayList<E> list = new java.util.ArrayList<>();
 	static int comparisons = 0;
