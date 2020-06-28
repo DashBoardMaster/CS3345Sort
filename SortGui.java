@@ -66,22 +66,23 @@ public class SortGui extends Application
 		Rectangle sortButtonList = new Rectangle(screenBounds.getMaxX() / 3, screenBounds.getMaxY());
 		sortButtonList.setFill(Color.LIGHTGRAY);
 		
-		Rectangle winningAlgorithm = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() / 16);
+		Rectangle winningAlgorithm = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() * 2 / 16);
 		winningAlgorithm.setFill(Color.YELLOW);
 		
-		Rectangle listProperties = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() / 16);
+		Rectangle listProperties = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() * 7 / 16);
 		listProperties.setFill(Color.RED);
 		
-		Rectangle experimentalResults = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() * 10 / 16 + screenBounds.getMaxY() * 2 / 16);
+		Rectangle experimentalResults = new Rectangle(screenBounds.getMaxX() * 2 / 3, screenBounds.getMaxY() * 7 / 16);
 		experimentalResults.setFill(Color.BLUE);
 		
 		AnchorPane anchor = new AnchorPane(sortButtonList, winningAlgorithm, listProperties, experimentalResults);
+		anchor.setStyle("-fx-border-color: grey;");
 		
 		AnchorPane.setTopAnchor(sortButtonList, 0.0);
 		AnchorPane.setLeftAnchor(sortButtonList, 0.0);
 		AnchorPane.setTopAnchor(winningAlgorithm, 0.0);
 		AnchorPane.setRightAnchor(winningAlgorithm, 0.0);
-		AnchorPane.setTopAnchor(listProperties, screenBounds.getMaxY() / 13);
+		AnchorPane.setTopAnchor(listProperties, screenBounds.getMaxY() * 2 / 16);
 		AnchorPane.setRightAnchor(listProperties, 0.0);
 		AnchorPane.setBottomAnchor(experimentalResults, 0.0);
 		AnchorPane.setRightAnchor(experimentalResults, 0.0);
