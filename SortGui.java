@@ -16,22 +16,6 @@ public class SortGui extends Application
 	{
 		this.data = data;
 	}
-
-	public void printData()
-	{
-		for(int i = 0; i < data.length; i++)
-		{
-			if (i == data.length - 1)
-			{
-				System.out.print(data[i]);
-			}
-			else
-			{
-				System.out.print(data[i] + ",");
-			}			
-		}
-		System.out.println();
-	}
 	
 	/* Generates 50000 random numbers from 1 to 1000000 
 	 * Duplicates allowed
