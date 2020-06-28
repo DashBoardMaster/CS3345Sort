@@ -2,11 +2,13 @@ import java.util.concurrent.ThreadLocalRandom;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Screen;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
@@ -59,11 +61,17 @@ public class SortGui extends Application
 	
 	@Override
 	public void start(Stage primaryStage) {
-		Rectangle r1 = new Rectangle(400,200);
+		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+		
+		Rectangle r1 = new Rectangle(screenBounds.getMaxX() / 2, screenBounds.getMaxY() / 2);
 		r1.setFill(Color.LIGHTGRAY);
-		Rectangle r2 = new Rectangle(200,400);
+		Rectangle r2 = new Rectangle(screenBounds.getMaxX() / 2, screenBounds.getMaxY() / 2);
 		r2.setFill(Color.DARKGRAY);
 		AnchorPane anchor = new AnchorPane(r1, r2);
+		AnchorPane.setTopAnchor(r1, 0.0);
+		AnchorPane.setLeftAnchor(r1, 0.0);
+		AnchorPane.setTopAnchor(r2, 0.0);
+		AnchorPane.setRightAnchor(r2, 0.0);
 		 
 		GridPane experimentalResults = new GridPane();
 		// experimentalResults.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
