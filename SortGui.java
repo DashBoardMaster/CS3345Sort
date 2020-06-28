@@ -1,7 +1,16 @@
 import java.util.concurrent.ThreadLocalRandom;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.geometry.Insets;
 
 
-public class SortGui 
+
+public class SortGui extends Application
 {
 	private int[] data;
 	
@@ -45,57 +54,28 @@ public class SortGui
 		return rand;
 	}
 	
-	public void insertionSort() 
-	{
-		for(int i = 1; i < data.length; i++)
-		{
-			for(int j = i - 1; j >= 0; j--)
-			{
-				if(data[j] > data[i]) 
-				{
-					// Swap values
-					data[i] = data[i] + data[j];
-					data[j] = data[i] - data[j];
-					data[i] = data[i] - data[j];
-					// Decrement i
-					i--; 
-				}
-			}
-		}
-	}
-	
-	public void selectionSort() 
-	{
-		for(int i = 0; i < data.length; i++)
-		{
-			int minIndex = i;
-			int min = data[minIndex];
-			
-			// Find min
-			for(int j = i + 1; j < data.length; j++)
-			{
-				if(data[j] < min)
-				{
-					min = data[j];
-					minIndex = j;
-				}
-			}
-			if (i != minIndex)
-			{
-				// Swap
-				data[i] = data[i] + data[minIndex];
-				data[minIndex] = data[i] - data[minIndex];
-				data[i] = data[i] - data[minIndex];
-			}
-		}
+	@Override
+	public void start(Stage primaryStage) {
+		 FlowPane pane = new FlowPane();
+		 pane.setPadding(new Insets(11, 12, 13, 14)); // Size of border of pane
+		 pane.setHgap(5); // Horizontal gap 
+		 pane.setVgap(5); // Vertical gap
+		 // Place nodes in the pane
+		 pane.getChildren().addAll(new Label("N:"), new TextField(), 
+				 				   new Label("DataType:"), new TextField(),
+				 				   new Label("Sort:"), new TextField(),
+				 				   new Label("Comparisons:"), new TextField(),
+				 				   new Label("Movements:"), new TextField(),
+				 				   new Label("Total time:"), new TextField());
+		 // Create a scene and place it in the stage
+		 Scene scene = new Scene(pane, 200, 250);
+		 primaryStage.setTitle("ShowFlowPane"); // Set the stage title
+		 primaryStage.setScene(scene); // Place the scene in the stage
+		 primaryStage.show(); // Display the stage
 	}
 	
 	public static void main(String[] args) 
 	{
-		SortGui sortGui = new SortGui();
-		System.out.println("Before sorting: ");
-		sortGui.printData();
-		System.out.println("After sorting: ");
-		sortGui.printData();
+		Application.launch(args);
 	}
 }
