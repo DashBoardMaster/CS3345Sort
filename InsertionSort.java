@@ -32,7 +32,6 @@ public class InsertionSort {
 			InsertionSort.insertionSort(list);
 			long end = System.nanoTime();
 			long time = end - start;
-			System.out.println("Size: " + i);
 			System.out.print(InsertionSort.comparisons + " ");
 			System.out.print(InsertionSort.movements + " ");
 			System.out.println(time);
@@ -47,7 +46,6 @@ public class InsertionSort {
 			InsertionSort.insertionSort(list);
 			long end = System.nanoTime();
 			long time = end - start;
-			System.out.println("Size: " + i);
 			System.out.print(InsertionSort.comparisons + " ");
 			System.out.print(InsertionSort.movements + " ");
 			System.out.println(time);
@@ -66,7 +64,6 @@ public class InsertionSort {
 			InsertionSort.insertionSort(list);
 			long end = System.nanoTime();
 			long time = end - start;
-			System.out.println("Size: " + i);
 			System.out.print(InsertionSort.comparisons + " ");
 			System.out.print(InsertionSort.movements + " ");
 			System.out.println(time);
@@ -81,7 +78,6 @@ public class InsertionSort {
 			InsertionSort.insertionSort(list);
 			long end = System.nanoTime();
 			long time = end - start;
-			System.out.println("Size: " + i);
 			System.out.print(InsertionSort.comparisons + " ");
 			System.out.print(InsertionSort.movements + " ");
 			System.out.println(time);
