@@ -44,9 +44,9 @@ public class HeapSort {
 		for(int i = 10; i < 10001; i *= 10)
 		{
 			int[] list1 = SortGui.sortedDataGenerator((int) (i * 0.8));
-			int[] list2 = SortGui.randomDataGenerator((int) (i * 0.2));
+			int[] list2 = SortGui.randomNumberGenerator((int) (i * 0.2));
 			int[] list = new int[list1.length + list2.length];
-			System.arraycopy(list1, 0, list, 0, list1.length);  
+			System.arraycopy(list1, 0, list, 0, list1.length);
 			System.arraycopy(list2, 0, list, list1.length, list2.length);
 			long start = System.nanoTime();
 			HeapSort.heapSort(list);
@@ -70,14 +70,4 @@ public class HeapSort {
 			System.out.println(time);
 		}
 	}
-}
-
-
-public static void almostSortedDataGenerator(int size) {
-	int[] list1 = SortGui.sortedDataGenerator((int) (size * 0.8));
-    int[] list2 = SortGui.randomNumberGenerator((int) (size * 0.2));
-    int[] list = new int[list1.length + list2.length];
-    System.arraycopy(list1, 0, list, 0, list1.length);
-    System.arraycopy(list2, 0, list, list1.length, list2.length);
-}
 }
