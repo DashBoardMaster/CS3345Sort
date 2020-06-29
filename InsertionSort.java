@@ -9,7 +9,7 @@ public class InsertionSort {
           list[0..i] is sorted. */
 			int currentElement = list[i];
 			int k;
-			for (k = i - 1; k >= 0 & list[k] > currentElement; k--) {
+			for (k = i - 1; k >= 0 && list[k] > currentElement; k--) {
 				comparisons++;
 				// Shift element
 				list[k + 1] = list[k];
@@ -21,8 +21,9 @@ public class InsertionSort {
 			movements++;
 		}
 	}
+	
 	public static void main(String[] args) {
-		int[] list = SortGui.randomNumberGenerator(10);
+		int[] list = SortGui.randomNumberGenerator(10000);
 		long start = System.currentTimeMillis();
 		InsertionSort.insertionSort(list);
 		long end = System.currentTimeMillis();
@@ -34,6 +35,6 @@ public class InsertionSort {
 		System.out.println();
 		System.out.println("Comparisons: " + InsertionSort.comparisons);
 		System.out.println("Movements: " + InsertionSort.movements);
-		System.out.println("Time: " + (int) (time / 1000.0));
+		System.out.println("Time: " + time);
 	}
 }
