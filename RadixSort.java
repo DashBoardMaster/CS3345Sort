@@ -1,5 +1,5 @@
 import java.util.*;
-class Radix {
+class RadixSort {
 	static int comparisons = 0;
 	static int movements = 0;
 
@@ -34,7 +34,7 @@ class Radix {
 		for (i = 0; i < n; i++)
 			arr[i] = output[i];
 	}
-	static void radixsort(int arr[], int n)
+	static void radixSort(int arr[], int n)
 	{ // Find the maximum number to know number of digits
 		int m = getMax(arr, n);
 		for (int exp = 1; m/exp > 0; exp *= 10)
@@ -43,5 +43,63 @@ class Radix {
 	static void print(int arr[], int n) {
 		for (int i = 0; i< n; i++)
 			System.out.print(arr[i]+" ");
+	}
+	public static void main(String[] args) {
+		RadixSort.comparisons = 0;
+		RadixSort.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
+		{
+			int[] list = SortGui.sortedDataGenerator(i);
+			long start = System.nanoTime();
+			RadixSort.radixSort(list, list.length);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(RadixSort.comparisons + " ");
+			System.out.print(RadixSort.movements + " ");
+			System.out.println(time);
+		}
+		RadixSort.comparisons = 0;
+		RadixSort.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
+		{
+			int[] list = SortGui.reverseDataGenerator(i);
+			long start = System.nanoTime();
+			RadixSort.radixSort(list, list.length);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(RadixSort.comparisons + " ");
+			System.out.print(RadixSort.movements + " ");
+			System.out.println(time);
+		}
+		RadixSort.comparisons = 0;
+		RadixSort.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
+		{
+			int[] list1 = SortGui.sortedDataGenerator((int) (i * 0.8));
+			int[] list2 = SortGui.sortedDataGenerator((int) (i * 0.2));
+			int[] list = new int[list1.length + list2.length];
+			System.arraycopy(list1, 0, list, 0, list1.length);  
+			System.arraycopy(list2, 0, list, list1.length, list2.length);
+			long start = System.nanoTime();
+			RadixSort.radixSort(list, list.length);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(RadixSort.comparisons + " ");
+			System.out.print(RadixSort.movements + " ");
+			System.out.println(time);
+		}
+		RadixSort.comparisons = 0;
+		RadixSort.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
+		{
+			int[] list = SortGui.randomNumberGenerator(i);
+			long start = System.nanoTime();
+			RadixSort.radixSort(list, list.length);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(RadixSort.comparisons + " ");
+			System.out.print(RadixSort.movements + " ");
+			System.out.println(time);
+		}
 	}
 }
