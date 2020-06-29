@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.concurrent.ThreadLocalRandom;
@@ -9,9 +10,10 @@ import javax.swing.event.*;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
+import java.awt.event.ActionListener;
 
 
-public class SortGui extends JPanel{
+public class SortGui extends JPanel implements ActionListener{
 	private JButton jcomp1;
     private JButton jcomp2;
     private JButton jcomp3;
@@ -45,12 +47,17 @@ public class SortGui extends JPanel{
     
     private ChangeListener listener;
     
-    String RadioSelection = "";
+    String winningAlg = "";
+    long fastestTime=999999999;
     
-    int sliderValue = 0;
+    String RadioSelection = "Random";
     
-    int n;
-	String dataType;
+    int sliderValue = 15000;
+    
+    boolean listCreated=false;
+    
+    int n=15000;
+	String dataType = "Random";
 	String sort;
 	int comparisons;
 	int movements;
@@ -62,21 +69,30 @@ public class SortGui extends JPanel{
 	    public SortGui() {
 	        //construct components
 	    	 jcomp1 = new JButton ("Insertion Sort");
-	    	 	jcomp1.setActionCommand("Insertion Sort");
+	    	 jcomp1.addActionListener(this);
+	    	 jcomp1.setActionCommand("Insertion Sort");
+	    	 
+	    	 	
 	    	 	
 		        jcomp2 = new JButton ("Selection Sort");
+		        jcomp2.addActionListener(this);
 		        jcomp2.setActionCommand("Selection Sort");
 		        
+		        
 		        jcomp3 = new JButton ("Quick Sort");
+		        jcomp3.addActionListener(this);
 		        jcomp3.setActionCommand("Quick Sort");
 		        
 		        jcomp4 = new JButton ("Merge Sort");
+		        jcomp4.addActionListener(this);
 		        jcomp4.setActionCommand("Merge Sort");
 		        
 		        jcomp5 = new JButton ("Heap Sort");
+		        jcomp5.addActionListener(this);
 		        jcomp5.setActionCommand("Heap Sort");
 		     
 		        jcomp6 = new JButton ("Radix Sort");
+		        jcomp6.addActionListener(this);
 		        jcomp6.setActionCommand("Radix Sort");
 		    
 		        jcomp7 = new JLabel ("Winning Algorithm");
@@ -106,6 +122,7 @@ public class SortGui extends JPanel{
 		        		RadioSelection = "Random";
 		        	}
 		        });
+		        jcomp12.setSelected(true);
 		        
 		        group = new ButtonGroup();
 		        group.add(jcomp9);
@@ -128,14 +145,16 @@ public class SortGui extends JPanel{
 		            }
 		         };
 	    	
-		        jcomp13 = new JSlider (JSlider.HORIZONTAL,0, 30000,0);
+		        jcomp13 = new JSlider (JSlider.HORIZONTAL,1, 30000,15000);
 		        
 		        jcomp14 = new JTextField(5);
-		        jcomp14.setText("0");
+		        jcomp14.setText(""+n);
 		        jcomp14.setEditable(false);
+		        
 		        jcomp15 = new JButton ("Create The List");
+		        jcomp15.addActionListener(this);
 		        jcomp15.setActionCommand("Create The List");
-		        jcomp15.addChangeListener(listener);
+		        
 		        
 		        jcomp16 = new JLabel ("Expiremental Results");
 		        jcomp17 = new JLabel ("N:");
@@ -200,6 +219,8 @@ public class SortGui extends JPanel{
 		        add (jcomp27);
 		        add (jcomp28);
 		        add (jcomp29);
+		        
+		       
 
 		        //set component bounds (only needed by Absolute Positioning)
 		        jcomp1.setBounds (30, 30, 225, 105);
@@ -231,11 +252,6 @@ public class SortGui extends JPanel{
 		        jcomp27.setBounds (470, 505, 155, 20);
 		        jcomp28.setBounds (470, 530, 155, 20);
 		        jcomp29.setBounds (305, 60, 375, 45);
-	    }
-	    
-	    public SortGui(int data[]) {
-	    	this();
-	    	data = this.data;
 	    }
 	    
 	    public void addSlider(JSlider s)
@@ -314,6 +330,8 @@ public class SortGui extends JPanel{
 		return reverse;
 	}
 	
+	
+	
 	public void actionPerformed(ActionEvent e) {
 		  String command = e.getActionCommand();
 	        if (command.equals("Create The List")) {
@@ -321,25 +339,28 @@ public class SortGui extends JPanel{
 	        	  case "InOrder":
 	        		  dataType = "InOrder";
 	        		  data = sortedDataGenerator(n);
+	        		  listCreated = true;
 	        		  break;
 	        	  case "AlmostOrder":
 	        		  dataType = "AlmostOrder";
 	        		  data = almostSortedDataGenerator(n);
+	        		  listCreated = true;
 	        		  break;
 	        	  case "ReverseOrder":
 	        		  dataType = "ReverseOrder";
 	        		  data = reverseDataGenerator(n);
+	        		  listCreated = true;
 	        		  break;	        		  
 	        	  case "Random":
 	        		  dataType = "Random";
 	        		  data = randomNumberGenerator(n);
+	        		  listCreated = true;
 	        		  break;
 	        	default:
 	        		
 	        	
 	        	}
-	        } else if (command.equals("Insertion Sort")) {
-	        	System.out.println("Insertion");
+	        } else if (command.equals("Insertion Sort")&&listCreated) {
 	        	sort = "Insertion";
 	        	
 	        	long start = System.nanoTime();
@@ -350,14 +371,18 @@ public class SortGui extends JPanel{
 	        	jcomp23.setText(""+n);
 	        	jcomp24.setText(dataType);
 	        	jcomp25.setText(sort);
-	        	jcomp24.setText(""+comparisons);
-	        	jcomp25.setText(""+movements);
-	        	jcomp26.setText(""+totalTime);
+	        	jcomp26.setText(""+InsertionSort.comparisons);
+	        	jcomp27.setText(""+InsertionSort.movements);
+	        	jcomp28.setText(""+totalTime);
+	        	
+	        	if(totalTime<fastestTime) {
+	        		jcomp29.setText("Insertion Sort");
+	        	}
 	        	
 	        	
 	        
 	            
-	        }else if (command.equals("Selection Sort")) {
+	        }else if (command.equals("Selection Sort")&&listCreated) {
 	        	sort = "Selection";
 	        	
 	        	long start = System.nanoTime();
@@ -368,11 +393,16 @@ public class SortGui extends JPanel{
 	        	jcomp23.setText(""+n);
 	        	jcomp24.setText(dataType);
 	        	jcomp25.setText(sort);
-	        	jcomp24.setText(""+comparisons);
-	        	jcomp25.setText(""+movements);
-	        	jcomp26.setText(""+totalTime);
+	        	jcomp26.setText(""+SelectionSort.comparisons);
+	        	jcomp27.setText(""+SelectionSort.movements);
+	        	jcomp28.setText(""+totalTime);
+	        	
+	        	if(totalTime<fastestTime) {
+	        		jcomp29.setText("Selection Sort");
+	        		fastestTime = totalTime;
+	        	}
 	            
-	        }else if (command.equals("Quick Sort")) {
+	        }else if (command.equals("Quick Sort")&&listCreated) {
 	        	sort = "Quick";
 	        	
 	        	long start = System.nanoTime();
@@ -383,11 +413,16 @@ public class SortGui extends JPanel{
 	        	jcomp23.setText(""+n);
 	        	jcomp24.setText(dataType);
 	        	jcomp25.setText(sort);
-	        	jcomp24.setText(""+comparisons);
-	        	jcomp25.setText(""+movements);
-	        	jcomp26.setText(""+totalTime);
+	        	jcomp26.setText(""+QuickSort.comparisons);
+	        	jcomp27.setText(""+QuickSort.movements);
+	        	jcomp28.setText(""+totalTime);
+	        	
+	        	if(totalTime<fastestTime) {
+	        		jcomp29.setText("Quick Sort");
+	        		fastestTime = totalTime;
+	        	}
 	            
-	        }else if (command.equals("Merge Sort")) {
+	        }else if (command.equals("Merge Sort")&&listCreated) {
 	        	sort = "Merge";
 	        	
 	        	long start = System.nanoTime();
@@ -398,11 +433,16 @@ public class SortGui extends JPanel{
 	        	jcomp23.setText(""+n);
 	        	jcomp24.setText(dataType);
 	        	jcomp25.setText(sort);
-	        	jcomp24.setText(""+comparisons);
-	        	jcomp25.setText(""+movements);
-	        	jcomp26.setText(""+totalTime);
+	        	jcomp26.setText(""+MergeSort.comparisons);
+	        	jcomp27.setText(""+MergeSort.movements);
+	        	jcomp28.setText(""+totalTime);
+	        	
+	        	if(totalTime<fastestTime) {
+	        		jcomp29.setText("Merge Sort");
+	        		fastestTime = totalTime;
+	        	}
 	            
-	        }else if (command.equals("Heap Sort")) {
+	        }else if (command.equals("Heap Sort")&&listCreated) {
 	        	sort = "Heap";
 	        	
 	        	long start = System.nanoTime();
@@ -413,11 +453,16 @@ public class SortGui extends JPanel{
 	        	jcomp23.setText(""+n);
 	        	jcomp24.setText(dataType);
 	        	jcomp25.setText(sort);
-	        	jcomp24.setText(""+comparisons);
-	        	jcomp25.setText(""+movements);
-	        	jcomp26.setText(""+totalTime);
+	        	jcomp26.setText(""+Heap.comparisons);
+	        	jcomp27.setText(""+Heap.movements);
+	        	jcomp28.setText(""+totalTime);
+	        	
+	        	if(totalTime<fastestTime) {
+	        		jcomp29.setText("Heap Sort");
+	        		fastestTime = totalTime;
+	        	}
 	            
-	        }else if (command.equals("Radix Sort")) {
+	        }else if (command.equals("Radix Sort")&&listCreated) {
 	        	sort = "Radix";
 	        	
 	        	long start = System.nanoTime();
@@ -428,9 +473,14 @@ public class SortGui extends JPanel{
 	        	jcomp23.setText(""+n);
 	        	jcomp24.setText(dataType);
 	        	jcomp25.setText(sort);
-	        	jcomp24.setText(""+comparisons);
-	        	jcomp25.setText(""+movements);
-	        	jcomp26.setText(""+totalTime);
+	        	jcomp26.setText(""+RadixSort.comparisons);
+	        	jcomp27.setText(""+RadixSort.movements);
+	        	jcomp28.setText(""+totalTime);
+	        	
+	        	if(totalTime<fastestTime) {
+	        		jcomp29.setText("Radix Sort");
+	        		fastestTime = totalTime;
+	        	}
 	            
 	        }
 
