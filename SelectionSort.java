@@ -20,7 +20,7 @@ public class SelectionSort {
 			// Swap list[i] with list[currentMinIndex] if necessary
 			if (currentMinIndex != i) {
 				comparisons++;
-				list[currentMinIndex] = list[i];
+				list[currentMinIndex] = list[i];jhtts://os.google.om/oument//1EBHbVtLA7gvKNI4AEwg6__BTevzLhNy9T6_R6jg/eitjhtts://o	js.goohgle.tts:o/m/oosu.mgeont/o/g1lEeB.HboVm/toAugmveKnNtI/4A/E1wEgB6H_b_VBTtejLhAv7tzgtLvs:/K/os.goNhojgINle.oy4hm/ou9TAment//1ETBHbEV6jwctSLA_7gvG:kNh6R/i4^_taE/wjg6__G_Bo?BTevejzESLpdhNhy.iv/9TJGTtjz/th6_ottRhs^Litojtcs.goopjosgl	tge.om/hou:hhtmetss/ETNt.	t/:/./y1Eo9B:oH?BC:/Tm/Vgds/6jct?LO.?DECHAog7vODRt.skNCI4Ao6tJEuscjogmhwg6>SGMO_gls_eg/jt.oBeojTnOEHG:LhhLTP?OGCNti/gy9etso6t_.e6jgs/.je.s1di:/ote:hm.on/soTBt.	/t/C?ODHg/pdjmodsmdobdose./cVjhoc:scgd1unjtcuhg.uom/tEtsltmgh/OP>LetjotnudDGSAjhttj.nbtm/ohot:7slhs:e/gtonEb/djsld/ot/g.tvmBC?V.heDLSP?:K?HgS?OEntc.:/jle.cooMI/o;oBu//hHc.osmHA/sojtde/ublA/1tgmE:/b7
 				list[i] = currentMin;
 				movements++;
 			}
