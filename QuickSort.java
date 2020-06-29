@@ -7,11 +7,19 @@ public class QuickSort {
 	}
 
 	public static void quickSort(int[] list, int first, int last) {
-		if (last > first) {
-			int pivotIndex = partition(list, first, last);
-			quickSort(list, first, pivotIndex - 1);
-			quickSort(list, pivotIndex + 1, last);
-		}
+		try {
+			if (last > first) {
+				int pivotIndex = partition(list, first, last);
+				quickSort(list, first, pivotIndex - 1);
+				quickSort(list, pivotIndex + 1, last);
+			}
+		} catch(StackOverflowError e) {
+            // more general: catch(Error t)
+            // anything: catch(Throwable t)
+            System.out.println("Caught "+e);
+            e.printStackTrace();
+        }
+        System.out.println("After the error...");
 	}
 
 	/** Partition the array list[first..last] */

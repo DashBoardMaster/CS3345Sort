@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 import java.awt.event.ActionListener;
 
 
-public class SortGui extends JPanel implements ActionListener{
+public class SortGUI extends JPanel implements ActionListener{
 	private JButton jcomp1;
     private JButton jcomp2;
     private JButton jcomp3;
@@ -65,8 +65,9 @@ public class SortGui extends JPanel implements ActionListener{
 
 
 	    private int[] data;
+	    private int[] dataCopy;
 
-	    public SortGui() {
+	    public SortGUI() {
 	        //construct components
 	    	 jcomp1 = new JButton ("Insertion Sort");
 	    	 jcomp1.addActionListener(this);
@@ -264,7 +265,7 @@ public class SortGui extends JPanel implements ActionListener{
 	    public static void main (String[] args) {
 	        JFrame frame = new JFrame ("Sorting Project");
 	        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	        frame.getContentPane().add (new SortGui());
+	        frame.getContentPane().add (new SortGUI());
 	        frame.pack();
 	        frame.setVisible (true);
 	    }
@@ -301,8 +302,8 @@ public class SortGui extends JPanel implements ActionListener{
 	}
 	
 	public static int[] almostSortedDataGenerator(int size) {
-	    int[] list1 = SortGui.sortedDataGenerator((int) (size * 0.8));
-	    int[] list2 = SortGui.randomNumberGenerator((int) (size * 0.2));
+	    int[] list1 = SortGUI.sortedDataGenerator((int) (size * 0.8));
+	    int[] list2 = SortGUI.randomNumberGenerator((int) (size * 0.2));
 	    int[] list = new int[list1.length + list2.length];
 	    System.arraycopy(list1, 0, list, 0, list1.length);
 	    System.arraycopy(list2, 0, list, list1.length, list2.length);
@@ -362,9 +363,10 @@ public class SortGui extends JPanel implements ActionListener{
 	        	}
 	        } else if (command.equals("Insertion Sort")&&listCreated) {
 	        	sort = "Insertion";
+	        	dataCopy = data;
 	        	
 	        	long start = System.nanoTime();
-	        	InsertionSort.insertionSort(data);
+	        	InsertionSort.insertionSort(dataCopy);
 	        	long end = System.nanoTime();
 	        	totalTime = end - start;
 	        	
@@ -375,6 +377,9 @@ public class SortGui extends JPanel implements ActionListener{
 	        	jcomp27.setText(""+InsertionSort.movements);
 	        	jcomp28.setText(""+totalTime);
 	        	
+	        	InsertionSort.comparisons=0;
+	        	InsertionSort.movements=0;
+	        	
 	        	if(totalTime<fastestTime) {
 	        		jcomp29.setText("Insertion Sort");
 	        	}
@@ -384,9 +389,10 @@ public class SortGui extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Selection Sort")&&listCreated) {
 	        	sort = "Selection";
+	        	dataCopy = data;
 	        	
 	        	long start = System.nanoTime();
-	        	SelectionSort.selectionSort(data);
+	        	SelectionSort.selectionSort(dataCopy);
 	        	long end = System.nanoTime();
 	        	totalTime = end - start;
 	        	
@@ -397,6 +403,9 @@ public class SortGui extends JPanel implements ActionListener{
 	        	jcomp27.setText(""+SelectionSort.movements);
 	        	jcomp28.setText(""+totalTime);
 	        	
+	        	SelectionSort.comparisons=0;
+	        	SelectionSort.movements=0;
+	        	
 	        	if(totalTime<fastestTime) {
 	        		jcomp29.setText("Selection Sort");
 	        		fastestTime = totalTime;
@@ -404,9 +413,10 @@ public class SortGui extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Quick Sort")&&listCreated) {
 	        	sort = "Quick";
+	        	dataCopy = data;
 	        	
 	        	long start = System.nanoTime();
-	        	QuickSort.quickSort(data);
+	        	QuickSort.quickSort(dataCopy);
 	        	long end = System.nanoTime();
 	        	totalTime = end - start;
 	        	
@@ -417,6 +427,9 @@ public class SortGui extends JPanel implements ActionListener{
 	        	jcomp27.setText(""+QuickSort.movements);
 	        	jcomp28.setText(""+totalTime);
 	        	
+	        	QuickSort.comparisons=0;
+	        	QuickSort.movements=0;
+	        	
 	        	if(totalTime<fastestTime) {
 	        		jcomp29.setText("Quick Sort");
 	        		fastestTime = totalTime;
@@ -424,9 +437,10 @@ public class SortGui extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Merge Sort")&&listCreated) {
 	        	sort = "Merge";
+	        	dataCopy = data;
 	        	
 	        	long start = System.nanoTime();
-	        	MergeSort.mergeSort(data);
+	        	MergeSort.mergeSort(dataCopy);
 	        	long end = System.nanoTime();
 	        	totalTime = end - start;
 	        	
@@ -437,6 +451,9 @@ public class SortGui extends JPanel implements ActionListener{
 	        	jcomp27.setText(""+MergeSort.movements);
 	        	jcomp28.setText(""+totalTime);
 	        	
+	        	MergeSort.comparisons=0;
+	        	MergeSort.movements=0;
+	        	
 	        	if(totalTime<fastestTime) {
 	        		jcomp29.setText("Merge Sort");
 	        		fastestTime = totalTime;
@@ -444,9 +461,10 @@ public class SortGui extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Heap Sort")&&listCreated) {
 	        	sort = "Heap";
+	        	dataCopy = data;
 	        	
 	        	long start = System.nanoTime();
-	        	HeapSort.heapSort(data);
+	        	HeapSort.heapSort(dataCopy);
 	        	long end = System.nanoTime();
 	        	totalTime = end - start;
 	        	
@@ -457,6 +475,9 @@ public class SortGui extends JPanel implements ActionListener{
 	        	jcomp27.setText(""+Heap.movements);
 	        	jcomp28.setText(""+totalTime);
 	        	
+	        	Heap.comparisons=0;
+	        	Heap.movements=0;
+	        	
 	        	if(totalTime<fastestTime) {
 	        		jcomp29.setText("Heap Sort");
 	        		fastestTime = totalTime;
@@ -464,9 +485,10 @@ public class SortGui extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Radix Sort")&&listCreated) {
 	        	sort = "Radix";
+	        	dataCopy = data;
 	        	
 	        	long start = System.nanoTime();
-	        	RadixSort.radixSort(data, comparisons);
+	        	RadixSort.radixSort(dataCopy, comparisons);
 	        	long end = System.nanoTime();
 	        	totalTime = end - start;
 	        	
@@ -476,6 +498,9 @@ public class SortGui extends JPanel implements ActionListener{
 	        	jcomp26.setText(""+RadixSort.comparisons);
 	        	jcomp27.setText(""+RadixSort.movements);
 	        	jcomp28.setText(""+totalTime);
+	        	
+	        	RadixSort.comparisons=0;
+	        	RadixSort.movements=0;
 	        	
 	        	if(totalTime<fastestTime) {
 	        		jcomp29.setText("Radix Sort");
