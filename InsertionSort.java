@@ -21,4 +21,19 @@ public class InsertionSort {
 			movements++;
 		}
 	}
+	public static void main(String[] args) {
+		int[] list = SortGui.randomNumberGenerator(10);
+		long start = System.currentTimeMillis();
+		InsertionSort.insertionSort(list);
+		long end = System.currentTimeMillis();
+		long time = end - start;
+		for (int i = 0; i < list.length; i++)
+		{
+			System.out.print(list[i] + " ");
+		}
+		System.out.println();
+		System.out.println("Comparisons: " + InsertionSort.comparisons);
+		System.out.println("Movements: " + InsertionSort.movements);
+		System.out.println("Time: " + (int) (time / 1000.0));
+	}
 }
