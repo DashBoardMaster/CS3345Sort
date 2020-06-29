@@ -1,5 +1,3 @@
-package Sorting;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -315,8 +313,6 @@ public class SortGui extends JPanel{
 		}
 		return reverse;
 	}
-	
-	
 	
 	public void actionPerformed(ActionEvent e) {
 		  String command = e.getActionCommand();
