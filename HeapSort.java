@@ -12,17 +12,62 @@ public class HeapSort {
 		for (int i = list.length - 1; i >= 0; i--)
 			list[i] = heap.remove();
 	}
-
-	/** A test method */
 	public static void main(String[] args) {
-		Integer[] list = {-44, -5, -3, 3, 3, 1, -4, 0, 1, 2, 4, 5, 53};
-		heapSort(list);
-		for (int i = 0; i < list.length; i++)
+		Heap.comparisons = 0;
+		Heap.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
 		{
-			System.out.print(list[i] + " ");
+			int[] list = SortGui.sortedDataGenerator(i);
+			long start = System.nanoTime();
+			HeapSort.heapSort(list);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(Heap.comparisons + " ");
+			System.out.print(Heap.movements + " ");
+			System.out.println(time);
 		}
-		System.out.println();
-		System.out.println(Heap.comparisons);
-		System.out.println(Heap.movements);
+		Heap.comparisons = 0;
+		Heap.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
+		{
+			int[] list = SortGui.reverseDataGenerator(i);
+			long start = System.nanoTime();
+			HeapSort.heapSort(list);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(Heap.comparisons + " ");
+			System.out.print(Heap.movements + " ");
+			System.out.println(time);
+		}
+		Heap.comparisons = 0;
+		Heap.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
+		{
+			int[] list1 = SortGui.sortedDataGenerator((int) (i * 0.8));
+			int[] list2 = SortGui.sortedDataGenerator((int) (i * 0.2));
+			int[] list = new int[list1.length + list2.length];
+			System.arraycopy(list1, 0, list, 0, list1.length);  
+			System.arraycopy(list2, 0, list, list1.length, list2.length);
+			long start = System.nanoTime();
+			HeapSort.heapSort(list);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(Heap.comparisons + " ");
+			System.out.print(Heap.movements + " ");
+			System.out.println(time);
+		}
+		Heap.comparisons = 0;
+		Heap.movements = 0;
+		for(int i = 10; i < 10001; i *= 10)
+		{
+			int[] list = SortGui.randomNumberGenerator(i);
+			long start = System.nanoTime();
+			HeapSort.heapSort(list);
+			long end = System.nanoTime();
+			long time = end - start;
+			System.out.print(Heap.comparisons + " ");
+			System.out.print(Heap.movements + " ");
+			System.out.println(time);
+		}
 	}
 }
