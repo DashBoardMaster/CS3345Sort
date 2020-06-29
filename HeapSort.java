@@ -1,8 +1,8 @@
 public class HeapSort {
 	/** Heap sort method */
-	public static <E extends Comparable<E>> void heapSort(E[] list) {
+	public static <E extends Comparable<E>> void heapSort(int[] list) {
 		// Create a Heap of integers
-		Heap<E> heap = new Heap<>();
+		Heap<int> heap = new Heap<>();
 
 		// Add elements to the heap
 		for (int i = 0; i < list.length; i++)
