@@ -363,7 +363,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	        	}
 	        } else if (command.equals("Insertion Sort")&&listCreated) {
 	        	sort = "Insertion";
-	        	dataCopy = data;
+	        	dataCopy = data.clone();
 	        	
 	        	long start = System.nanoTime();
 	        	InsertionSort.insertionSort(dataCopy);
@@ -389,7 +389,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Selection Sort")&&listCreated) {
 	        	sort = "Selection";
-	        	dataCopy = data;
+	        	dataCopy = data.clone();
 	        	
 	        	long start = System.nanoTime();
 	        	SelectionSort.selectionSort(dataCopy);
@@ -413,7 +413,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Quick Sort")&&listCreated) {
 	        	sort = "Quick";
-	        	dataCopy = data;
+	        	dataCopy = data.clone();
 	        	
 	        	long start = System.nanoTime();
 	        	QuickSort.quickSort(dataCopy);
@@ -437,7 +437,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Merge Sort")&&listCreated) {
 	        	sort = "Merge";
-	        	dataCopy = data;
+	        	dataCopy = data.clone();
 	        	
 	        	long start = System.nanoTime();
 	        	MergeSort.mergeSort(dataCopy);
@@ -461,7 +461,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Heap Sort")&&listCreated) {
 	        	sort = "Heap";
-	        	dataCopy = data;
+	        	dataCopy = data.clone();
 	        	
 	        	long start = System.nanoTime();
 	        	HeapSort.heapSort(dataCopy);
@@ -485,7 +485,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	            
 	        }else if (command.equals("Radix Sort")&&listCreated) {
 	        	sort = "Radix";
-	        	dataCopy = data;
+	        	dataCopy = data.clone();
 	        	
 	        	long start = System.nanoTime();
 	        	RadixSort.radixSort(dataCopy, comparisons);
