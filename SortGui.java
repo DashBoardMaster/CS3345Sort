@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 import java.awt.event.ActionListener;
 
 
-public class SortGUI extends JPanel implements ActionListener{
+public class SortGui extends JPanel implements ActionListener{
 	private JButton jcomp1;
     private JButton jcomp2;
     private JButton jcomp3;
@@ -67,7 +67,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	    private int[] data;
 	    private int[] dataCopy;
 
-	    public SortGUI() {
+	    public SortGui() {
 	        //construct components
 	    	 jcomp1 = new JButton ("Insertion Sort");
 	    	 jcomp1.addActionListener(this);
@@ -265,7 +265,7 @@ public class SortGUI extends JPanel implements ActionListener{
 	    public static void main (String[] args) {
 	        JFrame frame = new JFrame ("Sorting Project");
 	        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	        frame.getContentPane().add (new SortGUI());
+	        frame.getContentPane().add (new SortGui());
 	        frame.pack();
 	        frame.setVisible (true);
 	    }
@@ -302,8 +302,8 @@ public class SortGUI extends JPanel implements ActionListener{
 	}
 	
 	public static int[] almostSortedDataGenerator(int size) {
-	    int[] list1 = SortGUI.sortedDataGenerator((int) (size * 0.8));
-	    int[] list2 = SortGUI.randomNumberGenerator((int) (size * 0.2));
+	    int[] list1 = SortGui.sortedDataGenerator((int) (size * 0.8));
+	    int[] list2 = SortGui.randomNumberGenerator((int) (size * 0.2));
 	    int[] list = new int[list1.length + list2.length];
 	    System.arraycopy(list1, 0, list, 0, list1.length);
 	    System.arraycopy(list2, 0, list, list1.length, list2.length);
